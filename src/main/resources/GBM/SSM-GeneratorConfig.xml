@@ -59,15 +59,7 @@
         -->
         <table tableName="t_emp" domainObjectName="Employee"/>
 
-        <table schema="" tableName="sys_role" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false" >
-        </table>
-        <table schema="" tableName="sys_permission" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false" >
-        </table>
-        <table schema="" tableName="sys_role_permission" enableCountByExample="false" enableSelectByExample="false"
-               enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false" >
-        </table>
+        <table tableName="t_dept" domainObjectName="Dept"/>
 
     </context>
 </generatorConfiguration>
