@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ssmcurd:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="ssm-curd.war">
+      <element id="artifact" artifact-name="ssmcurd:war exploded" />
+    </root>
+  </artifact>
+</component>

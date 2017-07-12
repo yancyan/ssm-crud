@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="GBM/SSM-DB.properties"></properties>
+    <!--classPathEntry location="SSM-DB.properties 文件中jdbc.driverLocation属性的值" /-->
+    <classPathEntry location="${jdbc.driverLocation}" />
+
+    <context id="context1" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <!-- 去除自动生成的注释 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!-- 数据库连接配置 -->
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.connectionURL}"
+                        userId="${jdbc.userId}"
+                        password="${jdbc.password}" />
+        <!--jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/test"
+                        userId="root"
+                        password="mysql" /-->
+
+        <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--配置生成的实体包
+            targetPackage：生成的实体包位置，默认存放在src目录下
+            targetProject：目标工程名
+         -->
+        <javaModelGenerator targetPackage="com.sylg.ssm.bean"
+                            targetProject="./src/main/java" >
+            <property name="enableSubPackages" value="true"></property>
+            <property name="trimStrings" value="true"></property>
+        </javaModelGenerator>
+
+        <!-- 实体包对应映射文件位置及名称，默认存放在src目录下 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="./src/main/resources" />
+
+        <!--指定dao接口生成的位置， mapper接口-->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.sylg.ssm.dao"
+                             targetProject="./src/main/java">
+           <property name="enableSubPackages" value="true"></property>
+        </javaClientGenerator>
+
+
+        <!-- 配置表
+            schema：不用填写
+            tableName: 表名
+            enableCountByExample、enableSelectByExample、enableDeleteByExample、enableUpdateByExample、selectByExampleQueryId：
+            去除自动生成的例子
+        -->
+        <table tableName="t_emp" domainObjectName="Employee"/>
+
+        <table schema="" tableName="sys_role" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false" >
+        </table>
+        <table schema="" tableName="sys_permission" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false" >
+        </table>
+        <table schema="" tableName="sys_role_permission" enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false" >
+        </table>
+
+    </context>
+</generatorConfiguration>
