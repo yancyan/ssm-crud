@@ -3,8 +3,8 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <properties resource="GBM/SSM-DB.properties"></properties>
-    <!--classPathEntry location="SSM-DB.properties 文件中jdbc.driverLocation属性的值" /-->
+    <properties resource="generator/init.properties"></properties>
+    <!--classPathEntry locatiinit.propertiesties 文件中jdbc.driverLocation属性的值" /-->
     <classPathEntry location="${jdbc.driverLocation}" />
 
     <context id="context1" targetRuntime="MyBatis3">
@@ -29,7 +29,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <!--配置生成的实体包
+        <!--配置生成的实体类
             targetPackage：生成的实体包位置，默认存放在src目录下
             targetProject：目标工程名
          -->
