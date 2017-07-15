@@ -39,9 +39,12 @@ public class MapperTest {
         //System.out.println(dept.toString());
         //System.out.println(emp.toString());
 
-        employeeMapper.insert(new Employee(null, "张da明", "男", "zhangxiaoming@qq.com", 1));
+       // employeeMapper.insert(new Employee(null, "张da明", "男", "zhangxiaoming@qq.com", 1));
 
         //Employee em = employeeMapper.selectByPrimaryKeyWithDept(1);
        // System.out.println(em.toString());
+
+        Employee emp = employeeMapper.selectByPrimaryKeyWithDept(1);
+        System.out.println(emp.toString()+emp.getDept().getDeptId()+emp.getDept().getDeptName());
     }
 }
