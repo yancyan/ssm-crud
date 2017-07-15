@@ -10,13 +10,10 @@
 	<typeAliases>
 		<package name="com.sylg.ssm.bean"/>
 	</typeAliases>
-	
-	<!--<plugins>
-		<plugin interceptor="com.github.pagehelper.PageInterceptor">
-			&lt;!&ndash;分页参数合理化  &ndash;&gt;
-			<property name="reasonable" value="true"/>
-		</plugin>
-	</plugins>-->
+
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+	</plugins>
 
 </configuration>
 
