@@ -7,8 +7,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>员工列表</title>
     <%
-        //pageContext.setAttribute("path", request.getContextPath());
-        application.setAttribute("path", request.getContextPath());
+        pageContext.setAttribute("path", request.getContextPath());
+        /*application.setAttribute("path", request.getContextPath());*/
     %>
     <!-- web路径：以/开始的相对路径，找资源，以服务器的路径为标准(http://localhost:3306)；
         需要加上项目名 http://localhost:3306/crud
@@ -74,27 +74,41 @@
             当前 ${pageInfo.pageNum }页,总${pageInfo.pages }
             页,总 ${pageInfo.total } 条记录
         </div>
-        <%--显示分页条--%>
+        <%--显示分页条
+            hasPreviousPage:当前页有没有前一页
+
+        --%>
         <div class="col-md-6">
             <nav aria-label="Page navigation">
                 <ul class="pagination">
-                    <li><a href="${path}/emps?pgn=1">首页</a></li>
-                    <li>
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li>
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                    <li><a href="${path}/emps?pgn=${pageInfo.pages}">末页</a></li>
+                    <li><a href="${path}/emps.do?pgn=1">首页</a></li>
+
+                    <c:if test="${pageInfo.hasPreviousPage}">
+                        <li>
+                            <a href="${path}/emps.do?pgn=${pageInfo.pageNum-1}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+
+                    <c:forEach items="${pageInfo.navigatepageNums }" var="page_Num">
+                        <c:if test="${page_Num == pageInfo.pageNum }">
+                            <li class="active"><a href="#">${page_Num }</a></li>
+                        </c:if>
+                        <c:if test="${page_Num != pageInfo.pageNum }">
+                            <li><a href="${path }/emps.do?pgn=${page_Num }">${page_Num }</a></li>
+                        </c:if>
+                    </c:forEach>
+
+
+                    <c:if test="${pageInfo.hasNextPage }">
+                        <li><a href="${path}/emps.do?pgn=${pageInfo.pageNum+1 }"
+                               aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+                        </a></li>
+                    </c:if>
+
+
+                    <li><a href="${path}/emps.do?pgn=${pageInfo.pages}">末页</a></li>
                 </ul>
             </nav>
         </div>
