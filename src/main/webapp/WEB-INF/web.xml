@@ -28,7 +28,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>DispatcherServlet</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
     <!--spring encoding 一定要放在所有的过滤器之前的-->

@@ -20,12 +20,11 @@ import java.util.List;
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
-
     /**
      * 查询员工数据（分页查询）
      * 引入pageHelper分页插件
      */
-    @RequestMapping("/emps")
+    @RequestMapping("/emps.do")
     public String getEmps(@RequestParam(value = "pgn", defaultValue ="1")Integer pgn, Model model){
         // 在查询之前只需要调用，传入页码，以及每页的大小
         PageHelper.startPage(pgn, 5);
@@ -35,6 +34,7 @@ public class EmployeeController {
             封装了详细的分页信息,包括有我们查询出来的数据，-->>> 5 :传入连续显示的页数 */
         PageInfo page = new PageInfo(emps, 5);
         model.addAttribute("pageInfo", page);
+        System.out.println("EmployeeController.getEmps---->>>> execution...");
         return "list";
     }
 }
