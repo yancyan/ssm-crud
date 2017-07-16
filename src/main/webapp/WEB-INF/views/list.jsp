@@ -74,10 +74,7 @@
             当前 ${pageInfo.pageNum }页,总${pageInfo.pages }
             页,总 ${pageInfo.total } 条记录
         </div>
-        <%--显示分页条
-            hasPreviousPage:当前页有没有前一页
-
-        --%>
+        <%--显示分页条  hasPreviousPage:当前页有没有前一页 --%>
         <div class="col-md-6">
             <nav aria-label="Page navigation">
                 <ul class="pagination">
@@ -100,13 +97,11 @@
                         </c:if>
                     </c:forEach>
 
-
                     <c:if test="${pageInfo.hasNextPage }">
                         <li><a href="${path}/emps.do?pgn=${pageInfo.pageNum+1 }"
                                aria-label="Next"> <span aria-hidden="true">&raquo;</span>
                         </a></li>
                     </c:if>
-
 
                     <li><a href="${path}/emps.do?pgn=${pageInfo.pages}">末页</a></li>
                 </ul>
