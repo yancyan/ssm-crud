@@ -31,9 +31,9 @@ public class EmployeeController {
     @RequestMapping("/emps.do")
     @ResponseBody
     public Message getEmpsWithJson(@RequestParam(value = "pgn", defaultValue = "1")Integer pgn) throws Exception {
-        PageHelper.startPage(pgn, 5);
+        PageHelper.startPage(pgn, 3);
         List<Employee> emps = employeeService.getAll();
-        PageInfo page = new PageInfo(emps, 5);
+        PageInfo page = new PageInfo(emps, 3);
         return Message.success().add("pageInfo", page);
     }
 
