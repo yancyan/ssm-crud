@@ -74,6 +74,7 @@
                         <label for="empName_add_input" class="col-sm-2 control-label">empName</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="empName" id="empName_add_input" placeholder="请输入名字">
+                            <span class="help-block"></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -91,6 +92,7 @@
                         <label for="email_add_input" class="col-sm-2 control-label">email</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="email" id="email_add_input" placeholder="请输入邮箱地址">
+                            <span class="help-block"></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -282,9 +284,56 @@
                 }
             })
         }
+        /*jquery 前端数据校验 */
+        function validate_add_form() {
+            //1, 校验用户名
+            var empName = $("#empName_add_input").val();
+            var regName = /(^[a-z0-9_-]{6,16}$)|(^[\u2E80-\u9FFF]{2, 5})/;
+            if(!regName.test(empName)){
+                //alert("用户名可以是2-5位中文或者6-16位英文和数字的组合");
+                show_validate_msg("#empName_add_input", "error", "用户名可以是2-5位中文或者6-16位英文和数字的组合");
+                return false;
+            }else{
+                show_validate_msg("#empName_add_input", "success", "");
+            }
+
+            //2、校验邮箱信息
+            var email = $("#email_add_input").val();
+            var regEmail = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+            if(!regEmail.test(email)){
+                show_validate_msg("#email_add_input", "error", "邮箱校验失败");
+                return false;
+            }else{
+                show_validate_msg("#empName_add_input", "success", "");
+            }
+            return true;
+        }
+        /*展示校验信息*/
+        function show_validate_msg(ele,status,msg) {
+            //清除当前元素的校验状态
+            $(ele).parent().removeClass("has-success has-error");
+            $(ele).next("span").text("");
+
+            if("success"==status){
+                $(ele).parent().addClass("has-success");
+                $(ele).next("span").text(msg);
+            }else if("error" == status){
+                $(ele).parent().addClass("has-error");
+                $(ele).next("span").text(msg);
+            }
+        }
+
+
+
         /*模态框中保存按钮提交数据到数据库*/
         $("#emp_save_modal_btn").click(function () {
-            //1, 发送ajax 请求保存员工
+
+            //1， 数据校验 校验失败则结束
+            if(!validate_add_form()) {
+                return false;
+            }
+
+            //2, 发送ajax 请求保存员工
             //jquery 序列化form内容
            $.ajax({
                url:"${page}/emp.do",
