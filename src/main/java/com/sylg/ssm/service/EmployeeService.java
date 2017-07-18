@@ -1,6 +1,7 @@
 package com.sylg.ssm.service;
 
 import com.sylg.ssm.bean.Employee;
+import com.sylg.ssm.bean.Message;
 import com.sylg.ssm.dao.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,4 +22,8 @@ public class EmployeeService {
        return employeeMapper.selectByExampleWithDept(null);
     }
 
+    public Message saveEmployee(Employee employee) {
+        employeeMapper.insertSelective(employee);
+        return Message.success();
+    }
 }

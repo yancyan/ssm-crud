@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,17 +24,27 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    /**
+     *  post保存； get查询； put修改； delete删除；
+     * 员工保存
+     * */
+    @ResponseBody
+    @RequestMapping(value = "/emp.do", method = RequestMethod.POST)
+    public Message saveEmp(Employee employee) {
+        employeeService.saveEmployee(employee);
+        return Message.success();
+    }
 
     /**
      * json的方式返回字符串  导入jackson的包
      * @responseBody 自动将返回的对象转为字符串
      */
-    @RequestMapping("/emps.do")
+    @RequestMapping(value = "/emps.do")
     @ResponseBody
     public Message getEmpsWithJson(@RequestParam(value = "pgn", defaultValue = "1")Integer pgn) throws Exception {
-        PageHelper.startPage(pgn, 3);
+        PageHelper.startPage(pgn, 5);
         List<Employee> emps = employeeService.getAll();
-        PageInfo page = new PageInfo(emps, 3);
+        PageInfo page = new PageInfo(emps, 5);
         return Message.success().add("pageInfo", page);
     }
 

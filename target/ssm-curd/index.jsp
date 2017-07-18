@@ -65,8 +65,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
-                </button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">新增员工</h4>
             </div>
             <div class="modal-body">
@@ -91,7 +90,7 @@
                     <div class="form-group">
                         <label for="email_add_input" class="col-sm-2 control-label">email</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="email_add_input" placeholder="请输入姓">
+                            <input type="text" class="form-control" name="email" id="email_add_input" placeholder="请输入邮箱地址">
                         </div>
                     </div>
                     <div class="form-group">
@@ -103,14 +102,17 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="emp_close_modal_btn">关闭</button>
+                <button type="button" class="btn btn-primary" id="emp_save_modal_btn">保存</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 
 
     <script type="text/javascript">
+
+        /*总记录数*/
+        var totalRecord ;
 
         function to_page(pgn) {
             $.ajax({
@@ -187,7 +189,7 @@
             $("#page_info").empty();
             $("#page_info").append("当前" + pageInfomation.pageNum + "页,总" +
                 pageInfomation.pages + "页,总" + pageInfomation.total + "条记录");
-            //totalRecord = result.extend.pageInfo.total;
+            totalRecord = result.extend.pageInfo.total;
             //currentPage = result.extend.pageInfo.pageNum;
 
         }
@@ -258,13 +260,49 @@
             navEle.appendTo("#page_nav");
 
         }
-        //按钮单击事件 绑定模态框
+        //按钮单击事件 弹出模态框
         $("#emp_add_model").click(function () {
+            getDepts();
             $("#empAddModal").modal({
                 backdrop: "static"
             })
-        })
+        });
+        /*查询所有的部门信息并显示在下拉列表中*/
+        function getDepts() {
+            $.ajax({
+                url:"${path}/depts.do",
+                type:"get",
+                success:function (result) {
+                   // console.log(result)；部门信息显示在下拉列表中
+                    //$("#empAddModal select").append("")
+                    $.each(result.extend.depts,function(){
+                        var optionEle = $("<option></option>").append(this.deptName).attr("value",this.deptId);
+                        optionEle.appendTo("#empAddModal select");
+                    });
+                }
+            })
+        }
+        /*模态框中保存按钮提交数据到数据库*/
+        $("#emp_save_modal_btn").click(function () {
+            //1, 发送ajax 请求保存员工
+            //jquery 序列化form内容
+           $.ajax({
+               url:"${page}/emp.do",
+               type: "POST",
+               data: $("#empAddModal form").serialize(),
+               success: function (result) {
+                   //alert(result.message); //保存成功。
 
+                   //1, 关闭模态框
+                   $("#empAddModal").modal("hide");
+                   //2, 来到最后一页 发送ajax， 显示最后一页数据
+                   /**
+                    * 分页插件pagehelper 会自动把大于总页码的页数查到最后一页
+                    */
+                   to_page(totalRecord);
+               }
+           });
+        });
     </script>
 </body>
 </html>
