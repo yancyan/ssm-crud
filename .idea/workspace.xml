@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c75f5cd7-a279-45e4-a164-ed031f4652d5" name="Default" comment="">
+    <list default="true" id="c75f5cd7-a279-45e4-a164-ed031f4652d5" name="Default" comment="update 前端规则检验，测试成功。">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm-curd/index.jsp" afterPath="$PROJECT_DIR$/target/ssm-curd/index.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,8 +36,8 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="315" column="0" lean-forward="true" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
+            <state relative-caret-position="414">
+              <caret line="356" column="21" lean-forward="false" selection-start-line="356" selection-start-column="10" selection-end-line="356" selection-end-column="21" />
               <folding>
                 <element signature="e#8139#10545#0#HTML" expanded="false" />
               </folding>
@@ -1130,7 +1131,7 @@
       <workItem from="1500339267788" duration="5470000" />
       <workItem from="1500344794627" duration="1999000" />
       <workItem from="1500352351007" duration="1432000" />
-      <workItem from="1500360971811" duration="11221000" />
+      <workItem from="1500360971811" duration="11361000" />
     </task>
     <task id="LOCAL-00001" summary="update ssm整合测试">
       <created>1499864672368</created>
@@ -1251,7 +1252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1500371817720</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="update 前端规则检验，测试成功。">
+      <created>1500375849634</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1500375849634</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1287,7 +1295,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115389000" />
+    <option name="totallyTimeSpent" value="115529000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1395,7 +1403,8 @@
     <MESSAGE value="update 模态框内局部刷新数据库数据，提供备选项。" />
     <MESSAGE value="update 保存以后跳转最后一页。" />
     <MESSAGE value="update 测试前端添加数据库数据校验—pre。" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 测试前端添加数据库数据校验—pre。" />
+    <MESSAGE value="update 前端规则检验，测试成功。" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 前端规则检验，测试成功。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1782,8 +1791,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="315" column="0" lean-forward="true" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
+        <state relative-caret-position="414">
+          <caret line="356" column="21" lean-forward="false" selection-start-line="356" selection-start-column="10" selection-end-line="356" selection-end-column="21" />
           <folding>
             <element signature="e#8139#10545#0#HTML" expanded="false" />
           </folding>

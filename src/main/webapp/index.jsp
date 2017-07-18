@@ -353,6 +353,10 @@
            });
         });
     </script>
+    <script type="text/javascript">
+        /*数据库数据重复校验检查*/
+
+    </script>
 </body>
 </html>
 
