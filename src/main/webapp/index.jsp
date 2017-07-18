@@ -65,8 +65,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
-                </button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">新增员工</h4>
             </div>
             <div class="modal-body">
@@ -258,12 +257,28 @@
             navEle.appendTo("#page_nav");
 
         }
-        //按钮单击事件 绑定模态框
+        //按钮单击事件 弹出模态框
         $("#emp_add_model").click(function () {
+            getDepts();
             $("#empAddModal").modal({
                 backdrop: "static"
             })
         })
+        /*查询所有的部门信息并显示在下拉列表中*/
+        function getDepts() {
+            $.ajax({
+                url:"${path}/depts.do",
+                type:"get",
+                success:function (result) {
+                   // console.log(result)；部门信息显示在下拉列表中
+                    //$("#empAddModal select").append("")
+                    $.each(result.extend.depts,function(){
+                        var optionEle = $("<option></option>").append(this.deptName).attr("value",this.deptId);
+                        optionEle.appendTo("#empAddModal select");
+                    });
+                }
+            })
+        }
 
     </script>
 </body>
