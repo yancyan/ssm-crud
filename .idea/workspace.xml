@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c75f5cd7-a279-45e4-a164-ed031f4652d5" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_0_9_5.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_0_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_0_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/ssmcurd_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/ssmcurd_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sylg/ssm/controller/EmployeeController.java" afterPath="$PROJECT_DIR$/src/main/java/com/sylg/ssm/controller/EmployeeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sylg/ssm/service/EmployeeService.java" afterPath="$PROJECT_DIR$/src/main/java/com/sylg/ssm/service/EmployeeService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ssmcurd.iml" afterPath="$PROJECT_DIR$/ssmcurd.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm-curd/index.jsp" afterPath="$PROJECT_DIR$/target/ssm-curd/index.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1139,7 +1129,7 @@
       <workItem from="1500339267788" duration="5470000" />
       <workItem from="1500344794627" duration="1999000" />
       <workItem from="1500352351007" duration="1432000" />
-      <workItem from="1500360971811" duration="6889000" />
+      <workItem from="1500360971811" duration="7537000" />
     </task>
     <task id="LOCAL-00001" summary="update ssm整合测试">
       <created>1499864672368</created>
@@ -1246,7 +1236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1500346348050</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="update 保存以后跳转最后一页。">
+      <created>1500368570013</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1500368570013</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1282,7 +1279,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111057000" />
+    <option name="totallyTimeSpent" value="111705000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1388,7 +1385,8 @@
     <MESSAGE value="update ajax测试成功！version2.0" />
     <MESSAGE value="update 添加新增模态框" />
     <MESSAGE value="update 模态框内局部刷新数据库数据，提供备选项。" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 模态框内局部刷新数据库数据，提供备选项。" />
+    <MESSAGE value="update 保存以后跳转最后一页。" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 保存以后跳转最后一页。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
