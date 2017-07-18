@@ -26,8 +26,8 @@
     <%--按钮--%>
     <div class="row">
         <div class="col-md-4 col-md-offset-8">
-            <button class="btn btn-primary">新增</button>
-            <button class="btn btn-danger">删除</button>
+            <button class="btn btn-primary" id="emp_add_model">新增</button>
+            <button class="btn btn-danger" id="emp_delete_model">删除</button>
         </div>
     </div>
     <%--显示数据表格--%>
@@ -58,14 +58,66 @@
         <div class="col-md-6" id="page_nav"></div>
     </div>
 </div>
+
+<!-- 员工添加模态框（Modal） -->
+<div class="modal fade" id="empAddModal" tabindex="-1" role="dialog" 20. aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">新增员工</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="empName_add_input" class="col-sm-2 control-label">empName</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="empName" id="empName_add_input" placeholder="请输入名字">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">gender</label>
+                        <div class="col-sm-10">
+                            <label class="checkbox-inline">
+                                <input type="radio" name="gender" id="gender1_add_input" value="M" checked> 男
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="radio" name="gender" id="gender2_add_input" value="F"> 女
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email_add_input" class="col-sm-2 control-label">email</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="email_add_input" placeholder="请输入姓">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">deptName</label>
+                        <div class="col-sm-4">
+                            <select class="form-control" name="dId"></select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+
+
     <script type="text/javascript">
 
-        function to_page(pgn){
+        function to_page(pgn) {
             $.ajax({
-                url:"${path}/emps.do",
-                data:"pgn="+pgn,
-                type:"GET",
-                success:function(result){
+                url: "${path}/emps.do",
+                data: "pgn=" + pgn,
+                type: "GET",
+                success: function (result) {
                     //console.log(result);
                     //1、解析并显示员工数据
                     build_emps_table(result);
@@ -76,7 +128,6 @@
                 }
             });
         }
-
         //1, 页面加载完成以后，直接发送ajax请求，请求分页数据。
         $(function () {
             to_page(1);
@@ -90,7 +141,7 @@
                 //alert(item.empName);
                 var empIdTD = $("<td></td>").append(item.empId);
                 var empNameTD = $("<td></td>").append(item.empName);
-                var genderTD = $("<td></td>").append(item.gender=="M"?"男":"女");
+                var genderTD = $("<td></td>").append(item.gender == "M" ? "男" : "女");
                 var emailTD = $("<td></td>").append(item.email);
                 var deptNameTD = $("<td></td>").append(item.dept.deptName);
                 /**
@@ -134,8 +185,8 @@
         function build_page_info(result) {
             var pageInfomation = result.extend.pageInfo;
             $("#page_info").empty();
-            $("#page_info").append("当前"+pageInfomation.pageNum+"页,总"+
-                pageInfomation.pages+"页,总"+ pageInfomation.total+"条记录");
+            $("#page_info").append("当前" + pageInfomation.pageNum + "页,总" +
+                pageInfomation.pages + "页,总" + pageInfomation.total + "条记录");
             //totalRecord = result.extend.pageInfo.total;
             //currentPage = result.extend.pageInfo.pageNum;
 
@@ -150,16 +201,16 @@
                 $("<a></a>").append("首页").attr("href", "#")
             );
             var prePageLi = $("<li></li>").append($("<a></a>").append("&laquo;"));
-            if(result.extend.pageInfo.hasPreviousPage == false){
+            if (result.extend.pageInfo.hasPreviousPage == false) {
                 firstPageLi.addClass("disabled");
                 prePageLi.addClass("disabled");
-            }else{
+            } else {
                 //为元素添加点击翻页的事件
-                firstPageLi.click(function(){
+                firstPageLi.click(function () {
                     to_page(1);
                 });
-                prePageLi.click(function(){
-                    to_page(result.extend.pageInfo.pageNum -1);
+                prePageLi.click(function () {
+                    to_page(result.extend.pageInfo.pageNum - 1);
                 });
             }
             //添加首页和前一页 的提示
@@ -167,14 +218,14 @@
 
 
             //1,2，3遍历给ul中添加页码提示
-            $.each(result.extend.pageInfo.navigatepageNums,function(index, item){
+            $.each(result.extend.pageInfo.navigatepageNums, function (index, item) {
 
                 var numLi = $("<li></li>").append($("<a></a>").append(item));
                 /*上一页和首页的点击事件*/
-                if(result.extend.pageInfo.pageNum == item){
+                if (result.extend.pageInfo.pageNum == item) {
                     numLi.addClass("active");
                 }
-                numLi.click(function(){
+                numLi.click(function () {
                     to_page(item);
                 });
                 ul.append(numLi);
@@ -186,14 +237,14 @@
             );
             var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;"));
             /* 下一页和末页的点击事件*/
-            if(result.extend.pageInfo.hasNextPage == false){
+            if (result.extend.pageInfo.hasNextPage == false) {
                 nextPageLi.addClass("disabled");
                 lastPageLi.addClass("disabled");
-            }else{
-                nextPageLi.click(function(){
-                    to_page(result.extend.pageInfo.pageNum +1);
+            } else {
+                nextPageLi.click(function () {
+                    to_page(result.extend.pageInfo.pageNum + 1);
                 });
-                lastPageLi.click(function(){
+                lastPageLi.click(function () {
                     to_page(result.extend.pageInfo.pages);
                 });
             }
@@ -207,6 +258,13 @@
             navEle.appendTo("#page_nav");
 
         }
+        //按钮单击事件 绑定模态框
+        $("#emp_add_model").click(function () {
+            $("#empAddModal").modal({
+                backdrop: "static"
+            })
+        })
+
     </script>
 </body>
 </html>
